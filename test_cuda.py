@@ -26,7 +26,7 @@ def main():
         interval = 5 # check every 5 seconds
         minimum = int(sys.argv[1])
         mm = get_gpu_memory_map()
-        for k,v in mm.items():
+        for k,v in sorted(mm.items(), key = lambda x : x[1], reverse = True):
             # print("GPU:{} |||| free: {}".format(k, v))
             if v > minimum:
                 print(k)
