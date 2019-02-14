@@ -35,10 +35,10 @@ def main():
         for k,v in sorted(mm.items(), key = lambda x : x[1], reverse = True):
             # print("GPU:{} |||| free: {}".format(k, v))
             if v > minimum and (not k in available_gpus):
-                available_gpus.append(k)
+                available_gpus.append(str(k))
                 if len(available_gpus) >= n_gpus:
                     print(','.join(available_gpus))
-                sys.exit(0)
+                    sys.exit(0)
         time.sleep(interval)   # Delays for 5 seconds.
 
 if __name__ == '__main__':
