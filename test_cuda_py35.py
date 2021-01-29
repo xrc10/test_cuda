@@ -15,9 +15,9 @@ def get_gpu_memory_map():
         [
             'nvidia-smi', '--query-gpu=memory.free',
             '--format=csv,nounits,noheader'
-        ], encoding='utf-8')
+        ])
     # Convert lines into a dictionary
-    gpu_memory = [int(x) for x in result.strip().split('\n')]
+    gpu_memory = [int(x) for x in result.decode("utf-8").strip().split('\n')]
     gpu_memory_map = dict(zip(range(len(gpu_memory)), gpu_memory))
     return gpu_memory_map
 
